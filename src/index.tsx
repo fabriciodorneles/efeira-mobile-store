@@ -7,9 +7,9 @@ import AppContainer from './hooks';
 import Dashboard from './pages/Dashboard';
 
 const App: React.FC = () => (
-  <View style={{backgroundColor: '#312e38', flex: 1}}>
+  <View style={{backgroundColor: '#fff', flex: 1}}>
     {/* <AppContainer> */}
-    <StatusBar barStyle="light-content" backgroundColor="#312e38" />
+    <StatusBar barStyle="light-content" backgroundColor="#000" />
     {/* <Text>HELLO WORLD</Text> */}
     <Dashboard />
     {/* <Routes /> */}

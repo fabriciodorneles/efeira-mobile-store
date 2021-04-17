@@ -3,9 +3,11 @@ import { FlatList } from 'react-native';
 
 interface Product {
   id: string;
-  title: string;
-  image_url: string;
+  name: string;
+  avatar: string;
   price: number;
+  quantity: number;
+  description: string;
 }
 
 export const Container = styled.SafeAreaView`
@@ -15,9 +17,20 @@ export const Container = styled.SafeAreaView`
 
 export const ProductContainer = styled.View`
   border-radius: 5px;
-  margin-top: 60px;
+  margin-top: 20px;
   flex: 1;
   flex-direction: row;
+`;
+
+export const StoreHeader = styled.View`
+  width:100%;
+  height: 100px;
+  background: #3bb946;
+  justify-content:flex-start;
+`;
+
+export const ImageContainer = styled.Image`
+  margin-left: 12px;
 `;
 
 export const ProductList = styled(
@@ -30,7 +43,7 @@ export const ProductList = styled(
 `;
 
 export const Product = styled.View`
-  background: #fff;
+  background: #f0f0f5;
   padding: 16px 16px;
   border-radius: 5px;
   margin: 8px;
@@ -60,6 +73,21 @@ export const ProductPrice = styled.Text`
   font-weight: bold;
   font-size: 16px;
   color: #e83f5b;
+`;
+
+export const ActionContainer = styled.View`
+  align-self: flex-end;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-left: auto;
+`;
+
+export const ActionButton = styled.TouchableOpacity`
+  background: rgba(232, 63, 91, 0.1);
+  border-radius: 5px;
+  padding: 12px;
+  margin-bottom: 5px;
 `;
 
 export const ProductButton = styled.TouchableOpacity``;
