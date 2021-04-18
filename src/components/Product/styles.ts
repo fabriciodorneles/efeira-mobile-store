@@ -10,33 +10,6 @@ interface Product {
   description: string;
 }
 
-export const Container = styled.SafeAreaView`
-  flex: 1;
-  align-items: center;
-`;
-
-export const ProductContainer = styled.View`
-  border-radius: 5px;
-  margin-top: 20px;
-  flex: 1;
-  flex-direction: row;
-`;
-
-export const StoreHeader = styled.View`
-  flex-direction: row;
-  width:100%;
-  height: 100px;
-  background: #3bb946;
-  justify-content:space-between;
-  align-items:center;
-  padding-right: 20px;
-`;
-
-export const ImageContainer = styled.Image`
-  margin-top: -10px;
-  margin-left: 12px;
-`;
-
 export const ProductList = styled(
   FlatList as new () => FlatList<Product>,
 ).attrs({
@@ -46,7 +19,7 @@ export const ProductList = styled(
   padding: 0 10px;
 `;
 
-export const Product = styled.View`
+export const ProductContainer = styled.View`
   background: #f0f0f5;
   padding: 16px 16px;
   border-radius: 5px;
@@ -63,14 +36,17 @@ export const ProductImage = styled.Image`
 export const ProductTitle = styled.Text`
   font-size: 14px;
   margin-top: 10px;
+  align-self: center;
 `;
 
 export const PriceContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-top: 10px;
+  padding-top: 5px;
+  padding-bottom: 8px;
   margin-top: auto;
+  align-self: center;
 `;
 
 export const ProductPrice = styled.Text`
@@ -80,18 +56,37 @@ export const ProductPrice = styled.Text`
 `;
 
 export const ActionContainer = styled.View`
+  background: #fff;
+  flex-direction: row;
   align-self: flex-end;
   align-items: center;
   justify-content: space-between;
-
   margin-left: auto;
-`;
-
-export const ActionButton = styled.TouchableOpacity`
-  background: rgba(232, 63, 91, 0.1);
   border-radius: 5px;
-  padding: 12px;
-  margin-bottom: 5px;
+  margin-top: 9px;
 `;
 
-export const ProductButton = styled.TouchableOpacity``;
+export const PlusButton = styled.TouchableOpacity`
+  background: #dadaf1;
+  border-radius: 5px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  padding: 8px;
+`;
+
+export const MinusButton = styled.TouchableOpacity`
+  background: #dadaf1;
+  border-radius: 5px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  padding: 8px;
+`;
+
+export const QuantityContainer = styled.View`
+padding: 2px 2px;
+flex:1;
+align-items:center
+`;
+
+
+
