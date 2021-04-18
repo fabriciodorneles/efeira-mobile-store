@@ -1,42 +1,48 @@
-import React, { useMemo } from 'react';
-import FeatherIcon from 'react-native-vector-icons/Feather';
-
+import { useNavigation } from '@react-navigation/native';
+import React from 'react';
 import { View } from 'react-native';
-
+import FeatherIcon from 'react-native-vector-icons/Feather';
+import Logo from '../../assets/Logo.png';
+import { useCart } from '../../hooks/cart';
 import {
+  ActionButton,
+  ActionContainer,
+  Address,
+  AddressContainer,
+  BackButton,
+  ConfirmButton,
+  ConfirmText,
   Container,
+  ImageContainer,
+  LogoImage,
+  Product,
   ProductContainer,
   ProductList,
-  Product,
-  ProductImage,
-  ProductTitleContainer,
-  ProductTitle,
-  ProductPriceContainer,
-  ProductSinglePrice,
-  TotalContainer,
   ProductPrice,
+  ProductPriceContainer,
   ProductQuantity,
-  ActionContainer,
-  ActionButton,
-  TotalProductsContainer,
-  TotalProductsText,
+  ProductTitle,
+  ProductTitleContainer,
+  StoreHeader,
+  SubTitleCheckout,
   SubtotalValue,
+  TitleCheckout,
+  TotalContainer,
+  TotalPriceContainer
 } from './styles';
 
-import { useCart } from '../../hooks/cart';
-
-import formatValue from '../../utils/formatValue';
-
-interface Product {
+interface IProduct {
   id: string;
-  title: string;
-  image_url: string;
+  name: string;
+  avatar: string;
   price: number;
   quantity: number;
+  description: string;
 }
 
 const Cart: React.FC = () => {
-  const { increment, decrement, products } = useCart();
+  const navigation  = useNavigation();
+  const { increment, decrement, products, cartTotalPrice } = useCart();
 
   function handleIncrement(id: string): void {
     increment(id);
@@ -46,52 +52,50 @@ const Cart: React.FC = () => {
     decrement(id);
   }
 
-  const cartTotal = useMemo(() => {
-    let Total = 0;
-
-    products.map(product => {
-      Total += product.quantity * product.price;
-      return product;
-    });
-
-    return formatValue(Total);
-  }, [products]);
-
-  const totalItensInCart = useMemo(() => {
-    let Total = 0;
-
-    products.map(product => {
-      Total += product.quantity;
-      return product;
-    });
-    return Total;
-  }, [products]);
-
   return (
     <Container>
+      <StoreHeader>
+        <BackButton onPress={() => navigation.navigate('Dashboard')}>
+          <FeatherIcon name="arrow-left" color="#1e5323" size={36} />
+        </BackButton>
+        <ImageContainer>
+          <LogoImage source={Logo} />
+        </ImageContainer>
+      </StoreHeader>
+      <AddressContainer>
+        <TitleCheckout>Confirmação de Pedido</TitleCheckout>
+        <SubTitleCheckout>Endereço de Entrega:</SubTitleCheckout>
+        <Address>
+          Rua Pedro Paulo Freitas{"\n"}
+          Rua Altamiro de Abreu, 237{"\n"}
+          Apto. 707 Partenon - RJ{"\n"}
+          Fone: 21 9785-4800
+        </Address>
+      </AddressContainer>
       <ProductContainer>
+        <TotalPriceContainer>
+          <SubtotalValue>TOTAL: {cartTotalPrice} R$</SubtotalValue>
+        </TotalPriceContainer>
+        <ConfirmButton>
+          <ConfirmText>Confirmar Pedido</ConfirmText>
+        </ConfirmButton>
         <ProductList
           data={products}
-          keyExtractor={item => item.id}
+          keyExtractor={(item: IProduct) => item.id}
           ListFooterComponent={<View />}
           ListFooterComponentStyle={{
             height: 80,
           }}
-          renderItem={({ item }: { item: Product }) => (
+          renderItem={({ item }) => (
             <Product>
-              <ProductImage source={{ uri: item.image_url }} />
               <ProductTitleContainer>
-                <ProductTitle>{item.title}</ProductTitle>
+                <ProductTitle>{item.name}</ProductTitle>
                 <ProductPriceContainer>
-                  <ProductSinglePrice>
-                    {formatValue(item.price)}
-                  </ProductSinglePrice>
-
                   <TotalContainer>
-                    <ProductQuantity>{`${item.quantity}x`}</ProductQuantity>
-
+                    <ProductQuantity>{`${item.quantity}Kg x`}</ProductQuantity>
+                    <ProductQuantity>{`${item.price} R$ = `}</ProductQuantity>
                     <ProductPrice>
-                      {formatValue(item.price * item.quantity)}
+                      {`${item.price * item.quantity} R$`}
                     </ProductPrice>
                   </TotalContainer>
                 </ProductPriceContainer>
@@ -101,24 +105,19 @@ const Cart: React.FC = () => {
                   testID={`increment-${item.id}`}
                   onPress={() => handleIncrement(item.id)}
                 >
-                  <FeatherIcon name="plus" color="#E83F5B" size={16} />
+                  <FeatherIcon name="plus" color="#1e5323" size={16} />
                 </ActionButton>
                 <ActionButton
                   testID={`decrement-${item.id}`}
                   onPress={() => handleDecrement(item.id)}
                 >
-                  <FeatherIcon name="minus" color="#E83F5B" size={16} />
+                  <FeatherIcon name="minus" color="#1e5323" size={16} />
                 </ActionButton>
               </ActionContainer>
             </Product>
           )}
         />
       </ProductContainer>
-      <TotalProductsContainer>
-        <FeatherIcon name="shopping-cart" color="#fff" size={24} />
-        <TotalProductsText>{`${totalItensInCart} itens`}</TotalProductsText>
-        <SubtotalValue>{cartTotal}</SubtotalValue>
-      </TotalProductsContainer>
     </Container>
   );
 };

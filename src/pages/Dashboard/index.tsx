@@ -3,10 +3,7 @@ import { View } from 'react-native';
 import Logo from '../../assets/Logo.png';
 import FloatingCart from '../../components/FloatingCart';
 import Product from '../../components/Product/index';
-// import formatValue from '../../utils/formatValue';
-// import {useCart} from '../../hooks/cart';
 import api from '../../services/api';
-// import FloatingCart from '../../components/FloatingCart';
 import {
   Container,
   ImageContainer,
@@ -24,11 +21,7 @@ interface IProduct {
   description: string;
 }
 
-
-
 const Dashboard: React.FC = () => {
-  // const {addToCart} = useCart();
-
   const [products, setProducts] = useState<IProduct[]>([]);
 
   useEffect(() => {
@@ -40,10 +33,6 @@ const Dashboard: React.FC = () => {
 
     loadProducts();
   }, []);
-
-  // function handleAddToCart(item: Product): void {
-  //   addToCart(item);
-  // }
 
   return (
     <Container>
@@ -64,7 +53,6 @@ const Dashboard: React.FC = () => {
           )}
         />
       </ProductContainer>
-      {/* <FloatingCart /> */}
     </Container>
   );
 };

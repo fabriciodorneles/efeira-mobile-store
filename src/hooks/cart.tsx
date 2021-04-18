@@ -8,9 +8,7 @@ import React, {
     useMemo, useState
 } from 'react';
 
-
-
-interface Product {
+interface IProduct {
     id: string;
     name: string;
     avatar: string;
@@ -20,10 +18,10 @@ interface Product {
 }
 
 interface CartContext {
-    products: Product[];
+    products: IProduct[];
     totalItensInCart: number;
     cartTotalPrice: number;
-    addToCart(item: Omit<Product, 'quantity'>): void;
+    addToCart(item: Omit<IProduct, 'quantity'>): void;
     increment(id: string): void;
     decrement(id: string): void;
 }
@@ -31,7 +29,7 @@ interface CartContext {
 const CartContext = createContext<CartContext | null>(null);
 
 const CartProvider: React.FC = ({ children }) => {
-    const [products, setProducts] = useState<Product[]>([]);
+    const [products, setProducts] = useState<IProduct[]>([]);
 
     useEffect(() => {
         async function loadProducts(): Promise<void> {
