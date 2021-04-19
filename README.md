@@ -18,8 +18,8 @@
 </p>
 
 <p align="center">
-  <img alt="design do projeto - dashboard" width="650px" src="./.github/dashboard.png" />
-  <img alt="design do projeto - cart" width="650px" src="./.github/cart.png" />
+  <img alt="design do projeto - dashboard" width="650px" src="./readme_imgs/dashboard.png" />
+  <img alt="design do projeto - cart" width="650px" src="./readme_imgs/cart.png" />
 <p>
 
 ## 🚀Sobre
