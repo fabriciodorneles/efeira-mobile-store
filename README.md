@@ -25,7 +25,19 @@
 ## 🚀Sobre
 
 Aplicação experimental para uma loja de Frutas e Hortaliças. 
-Acessa uma API construida com node.js e já publicada na Digital Ocean.
+Acessa uma [API](https://apiefeira.fullmindstudio.net/products) construida com node.js e já publicada na Digital Ocean.
+
+* Testes em fase inicial de implementação(necessita aprofundamento)  
+
+* É possivel adicionar produtos no 'Painel do Feirante'  
+[https://painelefeira.fullmindstudio.net/](https://painelefeira.fullmindstudio.net/)  
+[Repositório](https://github.com/fabriciodorneles/e-feira-painel-feirante)
+* Loja Web  
+[https://storeefeira.fullmindstudio.net/](https://storeefeira.fullmindstudio.net/)  
+[Repositório](https://github.com/fabriciodorneles/e-feira-loja)
+* Server  
+[https://apiefeira.fullmindstudio.net/products](https://apiefeira.fullmindstudio.net/products)  
+[Repositório](https://github.com/fabriciodorneles/e-feira-server)
 
 
 ## 🛠 Tecnologias
