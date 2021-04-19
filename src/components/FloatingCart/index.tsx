@@ -20,13 +20,15 @@ const FloatingCart: React.FC = () => {
         testID="navigate-to-cart-button"
         onPress={() => navigation.navigate('Cart')}
       >
-        <IconContainer>
-          <FeatherIcon name="shopping-cart" size={24} color="#fff" />
-        </IconContainer>
-        <InfoContainer>
-          <CartButtonText>{`${totalItensInCart} itens`}</CartButtonText>
-          <CartTotalPrice>{cartTotalPrice},00 R$</CartTotalPrice>
-        </InfoContainer>
+        <>
+          <IconContainer>
+            <FeatherIcon name="shopping-cart" size={24} color="#fff" />
+          </IconContainer>
+          <InfoContainer>
+            <CartButtonText>{`${totalItensInCart} itens`}</CartButtonText>
+            <CartTotalPrice>{cartTotalPrice},00 R$</CartTotalPrice>
+          </InfoContainer>
+        </>
       </CartButton>
   );
 };
